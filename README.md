@@ -1,5 +1,5 @@
 
-# Title Of Your Project
+# DE Zoomcamp 2024
 Add a catchy title to your project. Something that people immediately know what you are doing
 
 # Introduction & Goals
@@ -13,7 +13,7 @@ Add a catchy title to your project. Something that people immediately know what 
 
 # Contents
 
-- [The Data Set](#the-data-set)
+- [Environment setup](#Environment setup)
 - [Used Tools](#used-tools)
   - [Connect](#connect)
   - [Buffer](#buffer)
@@ -32,7 +32,7 @@ Add a catchy title to your project. Something that people immediately know what 
 - [Appendix](#appendix)
 
 
-# The Data Set
+# Environment setup
 - Explain the data set
 - Why did you choose it?
 - What do you like about it?
