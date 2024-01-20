@@ -13,7 +13,8 @@ Add a catchy title to your project. Something that people immediately know what 
 
 # Contents
 
-- [Environment setup](#Environment setup)
+- [Environment setup](#Environment-setup)  
+  - [Setting up the environment on GCP cloud VM](#setting-up-the-environment-on-gcp-cloud-vm)
 - [Used Tools](#used-tools)
   - [Connect](#connect)
   - [Buffer](#buffer)
@@ -33,11 +34,30 @@ Add a catchy title to your project. Something that people immediately know what 
 
 
 # Environment setup
-- Explain the data set
-- Why did you choose it?
-- What do you like about it?
-- What is problematic?
-- What do you want to do with it?
+- For the course you'll need:  
+  * Python 3 (e.g. installed with Anaconda)
+  * Google Cloud SDK
+  * Docker with docker-compose
+  * Terraform
+  ## Setting up the environment on GCP cloud VM  
+    * Generating SSH keys  
+      1. Open Git Bash and under users home dir (/c/Users/Admin) do *__mkdir .ssh__*
+      2. From the link, https://cloud.google.com/compute/docs/connect/create-ssh-keys, Create an SSH key pair  
+        a. Use cmd - ssh-keygen -t rsa -f KEY_FILENAME(use *__gcp__*) -C USERNAME(*your name preferred*) -b 2048  
+        b. Enter passphrase (empty for no passphrase): *just hit enter, we dont want any pass phrase*  
+        c. do *ls* and it should list two keys, private key- *gcp* and public key - *gcp.pub*
+      3. Configure VM with ssh public key  
+        a. In GCP console, under Compute Engine, go to Metadata
+        b. Under SSH keys tab, add public SSH Key value and hit save. To copy value of *gcp.pub*, use *__cat gcp.pub__* 
+    * Create VM  
+      1. Under Create an instance  
+        a. Change name to de-zoomcamp  
+        b. Select Region  
+        c. Under Machine Config, select *series* - *E2* , *Machine type* - *e2-standard-4*   
+        d. Under Boot Disk, select *Image type* - *Ubuntu 20.04 LTS*, *size* - *30 GB*  
+        e. Hit Create   
+      
+
 
 # Used Tools
 - Explain which tools do you use and why
