@@ -47,7 +47,7 @@ Add a catchy title to your project. Something that people immediately know what 
         b. Enter passphrase (empty for no passphrase): *just hit enter, we dont want any pass phrase*  
         c. do *ls* and it should list two keys, private key- *gcp* and public key - *gcp.pub*
       3. Configure VM with ssh public key  
-        a. In GCP console, under Compute Engine, go to Metadata
+        a. In GCP console, under Compute Engine, go to Metadata  
         b. Under SSH keys tab, add public SSH Key value and hit save. To copy value of *gcp.pub*, use *__cat gcp.pub__* 
     * __Create VM__  
       1. Under Create an instance  
@@ -66,19 +66,24 @@ Add a catchy title to your project. Something that people immediately know what 
       2. To automatically activate the Conda base environment upon logging into your VM:  
         a. do *__vim ~/.bashrc__*  
         b. Go to the end of the file and press 'i' to activate insert mode  
-        c. Paste `eval "$(/path/to/your/anaconda3/bin/conda shell.bash hook)"`  
+        c. Paste to the end, `eval "$(/path/to/your/anaconda3/bin/conda shell.bash hook)"`  
         d. Press __Esc__ to exit insert mode, then type `:wq` to save and exit __vim__ editor  
         e. type logout  
-        f. Type `ssh de-zoomcamp` to login bac into VM, and it will show `(base)` representing conda activation  
+        f. Type `ssh de-zoomcamp` to login back into the VM, and it will show `(base)` representing conda activation  
       3. Set up local ssh config:  
-        a. Go to home dir in git bash, do *touch config* to create config file under ~/.ssh folder  
+        a. Go to home dir in git bash, do *touch config* to create config file under folder ~/.ssh   
         b. Open the config file in VScode using cmd *code config*  
         c. Add following details and save the file    
           1. Host de-zoomcamp
           2. Hostname <*external ip of the VM*>  
           3. User faisal  
           4. IdentityFile <*c:/full-path-of-private-ssh-key (/.ssh/gcp)*>  
-        d. From git bash terminal, go to home dir and enter cmd - *__ssh de-zoomcamp__*, to ssh into the VM
+        d. From git bash terminal, go to home dir and enter cmd - *__ssh de-zoomcamp__*, to ssh into the VM  
+    * __ssh with VS Code__  
+      1. In VS Code install the extension *__Remote - SSH__*
+      2. In the left bottom corner of the screen, click on the icon __><__, it lists option to connect to remote host via ssh
+      3. Since there is a config file with ssh host details for de-zoomcamp, it automatically lists it.
+      4. Upon clicking on de-zoomcamp, it should be successfully connected. The termal will show conda actived
           
         
 
