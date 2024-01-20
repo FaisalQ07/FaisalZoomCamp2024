@@ -77,11 +77,51 @@ Add a catchy title to your project. Something that people immediately know what 
           1. Host de-zoomcamp
           2. Hostname <*external ip of the VM*>  
           3. User faisal  
-          4. IdentityFile <*c:/full-path-of-private-ssh-key (/.ssh/gcp)*>  
-        d. From git bash terminal, go to home dir and enter cmd - *__ssh de-zoomcamp__*, to ssh into the VM  
+          4. IdentityFile <*c:/full-path-of-private-ssh-key (/.ssh/gcp)*>.    
+        d. From git bash terminal, go to home dir and enter cmd - *__ssh de-zoomcamp__*, to ssh into the VM 
+      4. Configure VM (cont.):  
+         * Clone Repo:  
+            1. Clone data-engineering-zoomcamp repo to de-zoomcamp VM. Use __git clone <*http-link*>__  
+         * Execute Commmand Docker run and install docker-compose: 
+            1. Cmd __docker run hello-world__ complains of permission issues.  
+            2. c. Go-to link [Run Docker commands without sudo](https://github.com/sindresorhus/guides/blob/main/docker-without-sudo.md). Follow first 3 steps. logout of VM and log back in  
+            3. Retry  __docker run hello-world__. It should successfully pull the image  
+            4. go to [Docker Compose Releases](https://github.com/docker/compose/releases/tag/v2.24.1). Copy the link to the latest [release](https://github.com/docker/compose/releases/download/v2.24.1/docker-compose-linux-x86_64)   
+            5. inside folder ~/bin, do __wget <*docker-compose-link*> -O docker-compose__  
+            6. Make the docker-compose executable. Use cmd: __chmod +x docker-compose__  
+            7. From bin, run cmd : __./docker-compose version__ . It should list the version of it  
+         * Add docker-compose to the PATH variable to be able to execute docker-compose from any directory:  
+            1. Run cmd __nano .bashrc__ . It opens the bashrc file
+            2. At the end of the file, add __export PATH="${HOME}/bin:${PATH}"__ . The command prepends the path of the binaries to the the PATH variable  
+            3. Hit CTRL+O to save it. Hit CTRL+X to exit the nano editor  
+            4. Run __source .bashrc__ to restart/logout-and-login  
+            5. Run __which docker-compose__ . It should print the path of docker-compose in __~/bin__
+            6. Run __cd data-engineering-zoomcamp/01-docker-terraform/2_docker_sql__  
+            7. Run __docker-compose up -d__ . It should pull sql images in the docker file under the folder  
+         * Configure VSCode to open repo in remote folder:  
+           1.  In the VSCode window that already has ssh VM connected, go-to file explorer.  
+           2. Click __Open the folder__ . It should list the options of folders within the de-zoomcamp VM directory.
+           3. Select __data-engineering-zoomcamp__ and hit okay. 
+         * Install pgcli:  
+           1. In VSCode, from the readme file under __data-engineering-zoomcamp/01-docker-terraform/2_docker_sql/README.md__, copy the line, `conda install -c conda-forge pgcli`   
+           2. From the git bash terminal, run the copied cmd above.
+           3. if it results in spinning forever (over 10min) to "Solving environment":  
+              * Run following commands from terminal:  
+                1. conda create -n pgcli  
+                2. conda activate pgcli  
+                3. conda install -c conda-forge pgcli  
+           4. Run cmd:  __pgcli -h localhost -p 5432 -u root -d ny_taxi__
+         * Setup port forwarding to local machine:  
+           1. 
+
+
+
+
+        
+
     * __ssh with VS Code__  
       1. In VS Code install the extension *__Remote - SSH__*
-      2. In the left bottom corner of the screen, click on the icon __><__, it lists option to connect to remote host via ssh
+      2. In the left bottom corner of the screen, click on the icon __><__. It lists option to connect to remote host via ssh
       3. Since there is a config file with ssh host details for de-zoomcamp, it automatically lists it.
       4. Upon clicking on de-zoomcamp, it should be successfully connected. The termal will show conda actived
           
